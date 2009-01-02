@@ -1,0 +1,5 @@
+Step 1: Generate a new merb application
+Step 2: Run 'thor merb:gem:install' to bundle the stack gems
+Step 3: Generate a resource using "merb-gen resource article 'title:string, body:text'"
+Step 4: Added timestamps to Article <timestamps :at>
+Step 5: Automigrate the database "rake db:automigrate"
