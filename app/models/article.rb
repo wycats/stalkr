@@ -5,4 +5,5 @@ class Article
 
   property :body, Text
   property :title, String
+  timestamps :at
 end
