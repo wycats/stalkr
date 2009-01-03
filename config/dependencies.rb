@@ -21,6 +21,17 @@ dependency "dm-migrations", dm_gems_version
 dependency "dm-timestamps", dm_gems_version do
   module DataMapper
     module Timestamp
+      private
+
+      def set_timestamps
+        return unless dirty? || new_record?
+        TIMESTAMP_PROPERTIES.each do |name,(_type,proc)|
+          if model.properties.has_property?(name)
+            model.properties[name].set(self, proc.call(self, model.properties[name])) unless attribute_dirty?(name)
+          end
+        end
+      end
+      
       module ClassMethods
         def timestamps(*names)
           raise ArgumentError, 'You need to pass at least one argument' if names.empty?
