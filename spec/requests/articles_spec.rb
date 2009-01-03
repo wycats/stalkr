@@ -8,6 +8,26 @@ given "a article exists" do
   request(resource(:articles), :method => "POST", :params => { :article => @article })
 end
 
+shared_examples_for "a form for entering title and body" do
+  it "responds successfully" do
+    @response.should be_successful
+  end
+  
+  it "has a field for entering the title" do
+    @response.should have_selector(
+      "form label:contains('Title') + input[type='text'][name*='title']")
+  end
+  
+  it "has a field for entering the body" do
+    @response.should have_selector(
+      "form label:contains('Body') + textarea[name*='body']")
+  end
+  
+  it "has a submit button" do
+    @response.should have_selector("form input[type='submit']")
+  end
+end
+
 describe "resource(:articles)" do
   describe "GET" do
     
@@ -52,6 +72,11 @@ describe "resource(:articles)" do
     it "supplies a delete link for the article" do
       @response.should have_selector(
         "ul li a[href='#{resource(Article.first, :delete)}']:contains('[delete]')")
+    end
+    
+    it "supplies an edit link for the article" do
+      @response.should have_selector(
+        "ul li a[href='#{resource(Article.first, :edit)}']:contains('[edit]')")
     end
     
     it "is identical to visiting '/'" do
@@ -117,30 +142,14 @@ describe "resource(@article)" do
 end
 
 describe "resource(:articles, :new)" do
+  it_should_behave_like "a form for entering title and body"
+  
   before(:each) do
     @response = request(resource(:articles, :new))
   end
   
-  it "responds successfully" do
-    @response.should be_successful
-  end
-  
   it "has a form that points to resource(:articles)" do
     @response.should have_selector("form[action='#{resource(:articles)}'][method='post']")
-  end
-  
-  it "has a field for entering the title" do
-    @response.should have_selector(
-      "form label:contains('Title') + input[type='text'][name*='title']")
-  end
-  
-  it "has a field for entering the body" do
-    @response.should have_selector(
-      "form label:contains('Body') + textarea[name*='body']")
-  end
-  
-  it "has a submit button" do
-    @response.should have_selector("form input[type='submit']")
   end
   
   describe "when submitting the form" do
@@ -170,12 +179,39 @@ describe "resource(:articles, :new)" do
 end
 
 describe "resource(@article, :edit)", :given => "a article exists" do
+  it_should_behave_like "a form for entering title and body"
+  
   before(:each) do
     @response = request(resource(Article.first, :edit))
   end
   
-  it "responds successfully" do
-    @response.should be_successful
+  it "has a form that points to resource(:articles)" do
+    @response.should have_selector("form[action='#{resource(Article.first)}'][method='post']")
+  end
+  
+  describe "when submitting the form" do
+    before(:each) do
+      @paragraph = /[:paragraph:]/.gen
+      fill_in      "Title", :with => "A new glorious title"
+      fill_in      "Body",  :with => @paragraph
+      @response = click_button "Update"
+    end
+    
+    it "redirects to resource(@article)" do
+      @response.url.should include(resource(Article.first))
+    end
+    
+    it "displays the article's title" do
+      @response.should have_selector("h1:contains('A new glorious title')")
+    end
+    
+    it "displays the article's body" do
+      @response.should have_selector(":contains('#{@paragraph}')")
+    end
+    
+    it "displays a message indicating that the article was created" do
+      @response.should have_selector("div.notice:contains('Article was successfully updated')")
+    end
   end
 end
 

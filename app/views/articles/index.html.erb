@@ -5,7 +5,8 @@
   <li>
     <h4><%= article.title %></h4>
     <p><%= read_more(article.body, article, 150) %>
-       <%= link_to "[delete]", resource(article, :delete) %></p>
+       <%= link_to "[delete]", resource(article, :delete) %>
+       <%= link_to "[edit]", resource(article, :edit) %></p>
   </li>
   <% end %>
 </ul>
