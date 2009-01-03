@@ -89,6 +89,45 @@ describe "resource(:articles, :new)" do
   it "responds successfully" do
     @response.should be_successful
   end
+  
+  it "has a form that points to resource(:articles)" do
+    @response.should have_selector("form[action='#{resource(:articles)}'][method='post']")
+  end
+  
+  it "has a field for entering the title" do
+    @response.should have_selector(
+      "form label:contains('Title') + input[type='text'][name*='title']")
+  end
+  
+  it "has a field for entering the body" do
+    @response.should have_selector(
+      "form label:contains('Body') + textarea[name*='body']")
+  end
+  
+  it "has a submit button" do
+    @response.should have_selector("form input[type='submit']")
+  end
+  
+  describe "when submitting the form" do
+    before(:each) do
+      @paragraph = /[:paragraph:]/.gen
+      fill_in      "Title", :with => "A glorious title"
+      fill_in      "Body",  :with => @paragraph
+      @response = click_button "Create"
+    end
+    
+    it "redirects to resource(@article)" do
+      @response.url.should include(resource(Article.first))
+    end
+    
+    it "displays the article's title" do
+      @response.should have_selector("h1:contains('A glorious title')")
+    end
+    
+    it "displays the article's body" do
+      @response.should have_selector(":contains('#{@paragraph}')")
+    end
+  end
 end
 
 describe "resource(@article, :edit)", :given => "a article exists" do
