@@ -44,6 +44,11 @@ describe "resource(:articles)" do
       @response.should_not have_selector("ul li:contains('#{@article[:body][151..200]}')")
     end
     
+    it "has a 'read more' link when the body is longer than 150 characters" do
+      @response.should have_selector(
+        "ul li a:contains('read more')[href='#{resource(Article.first)}']")
+    end
+    
     it "is identical to visiting '/'" do
       @response.body.to_s.should == @response_slash.body.to_s
     end
