@@ -15,3 +15,4 @@ Step 13:  Add a new helper to global_helpers.rb to handle more cases
 Step 14:  Add the message[:notice] to the layout, to display "Article was successfully created"
 Step 15:  Add delete link and delete confirmation
 Step 16:  Modify articles/edit.html to allow editing of existing article
+Step 17:  Reorganize articles spec into separate files (it's getting too big!)
