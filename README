@@ -20,3 +20,4 @@ Step 18:  Add validations to the article model, and test them
 NOTE:     The String column for :title automatically validates at 50 characters
 Step 19:  Inform the user why their creation or update failed validations
 Step 20:  Generate the comments model using "merb-gen resource article 'body:text, author:string'"
+Step 21:  Modify the router to nest comments under articles
