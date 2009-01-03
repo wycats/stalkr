@@ -33,3 +33,8 @@ task :default => 'spec'
 # ADD YOUR CUSTOM TASKS IN /lib/tasks
 # NAME YOUR RAKE FILES file_name.rake
 ##############################################################################
+
+task :bootstrap => :merb_env do
+  require("config" / "bootstrap")
+  BootStrap.generate_articles
+end
