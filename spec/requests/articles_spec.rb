@@ -2,8 +2,10 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
 given "a article exists" do
   Article.all.destroy!
-  request(resource(:articles), :method => "POST", 
-    :params => { :article => { :id => nil }})
+
+  @article = Article.make.attributes
+  
+  request(resource(:articles), :method => "POST", :params => { :article => @article })
 end
 
 describe "resource(:articles)" do
@@ -18,8 +20,7 @@ describe "resource(:articles)" do
     end
 
     it "contains a list of articles" do
-      pending
-      @response.should have_xpath("//ul")
+      @response.should have_selector("ul")
     end
     
   end
@@ -30,8 +31,15 @@ describe "resource(:articles)" do
     end
     
     it "has a list of articles" do
-      pending
-      @response.should have_xpath("//ul/li")
+      @response.should have_selector("ul li")
+    end
+    
+    it "has articles that contain a title" do
+      @response.should have_selector("ul li:contains('#{@article[:title]}')")
+    end
+
+    it "truncates the body after 150 characters" do
+      @response.should_not have_selector("ul li:contains('#{@article[:body][151..200]}')")
     end
   end
   
