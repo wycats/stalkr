@@ -22,3 +22,4 @@ Step 19:  Inform the user why their creation or update failed validations
 Step 20:  Generate the comments model using "merb-gen resource article 'body:text, author:string'"
 Step 21:  Modify the router to nest comments under articles
 Step 22:  Remove the default generated specs (they are not useful for nested resources)
+Step 23:  Set up timestamps and relationships for articles and comments
