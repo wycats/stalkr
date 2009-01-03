@@ -1,9 +1,13 @@
 class Comment
   include DataMapper::Resource
   
-  property :id, Serial
+  # Database schema
+  property   :id,     Serial
+  property   :body,   Text
+  property   :author, String
+  timestamps :at
 
-  property :body, Text
-  property :author, String
+  # Relationships
+  belongs_to :article
 
 end
