@@ -8,3 +8,4 @@ Step 7:   Generate some bootstrap articles using dm-sweatshop (run "rake bootstr
 Step 8:   Modify articles/index.html to list the generated articles
 Step 9:   Modify config/router.rb to point "/" to Articles#index
 Step 10:  Create a link to the article resource from articles/index.html
+Step 11:  Modify articles/show.html to show a single article, and add a "Back" link back to the index
