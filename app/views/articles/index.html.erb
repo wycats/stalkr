@@ -4,7 +4,7 @@
   <% @articles.each do |article| %>
   <li>
     <h4><%= article.title %></h4>
-    <p><%= article.body.truncate(150, link_to("... read more", resource(article))) %></p>
+    <p><%= read_more(article.body, article, 150) %></p>
   </li>
   <% end %>
 </ul>

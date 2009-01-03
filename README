@@ -10,3 +10,5 @@ Step 9:   Modify config/router.rb to point "/" to Articles#index
 Step 10:  Create a link to the article resource from articles/index.html
 Step 11:  Modify articles/show.html to show a single article, and add a "Back" link back to the index
 Step 12:  Modify articles/new.html to allow creation of a new article
+NOTE:     If we create a new article smaller than 150 characters, the "... more link does not display", so...
+Step 13:  Add a new helper to global_helpers.rb to handle more cases
