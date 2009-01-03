@@ -18,7 +18,31 @@ dependency "merb-exceptions", merb_gems_version
 dependency "dm-core", dm_gems_version         
 dependency "dm-aggregates", dm_gems_version   
 dependency "dm-migrations", dm_gems_version   
-dependency "dm-timestamps", dm_gems_version   
+dependency "dm-timestamps", dm_gems_version do
+  module DataMapper
+    module Timestamp
+      module ClassMethods
+        def timestamps(*names)
+          raise ArgumentError, 'You need to pass at least one argument' if names.empty?
+
+          names.each do |name|
+            case name
+              when *TIMESTAMP_PROPERTIES.keys
+                type = TIMESTAMP_PROPERTIES[name].first
+                property name, type, :nullable => false, :auto_validation => false
+              when :at
+                timestamps(:created_at, :updated_at)
+              when :on
+                timestamps(:created_on, :updated_on)
+              else
+                raise InvalidTimestampName, "Invalid timestamp property name '#{name}'"
+            end
+          end
+        end
+      end
+    end
+  end # module ClassMethods  
+end  
 dependency "dm-types", dm_gems_version        
 dependency "dm-validations", dm_gems_version  
 dependency "dm-sweatshop", dm_gems_version
