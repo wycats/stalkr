@@ -1,7 +1,5 @@
 <h1>Create a new article</h1>
 
 <%= form_for @article, :action => resource(:articles) do %>
-  <p><%= text_field :title, :label => "Title" %></p>
-  <p><%= text_area  :body,  :label => "Body" %></p>
-  <p><%= submit "Create" %></p>
+  <%= partial :form %>
 <% end =%>

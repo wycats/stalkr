@@ -14,3 +14,4 @@ NOTE:     If we create a new article smaller than 150 characters, the "... more 
 Step 13:  Add a new helper to global_helpers.rb to handle more cases
 Step 14:  Add the message[:notice] to the layout, to display "Article was successfully created"
 Step 15:  Add delete link and delete confirmation
+Step 16:  Modify articles/edit.html to allow editing of existing article

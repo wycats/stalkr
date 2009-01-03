@@ -16,5 +16,9 @@ module Merb
       link = link_to("... read more", resource(*object))
       "#{string.truncate(size, '')}#{link}"
     end
+    
+    def submit_text
+      action_name == "new" ? "Create" : "Update"
+    end
   end
 end
