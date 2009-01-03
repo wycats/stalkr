@@ -16,3 +16,6 @@ Step 14:  Add the message[:notice] to the layout, to display "Article was succes
 Step 15:  Add delete link and delete confirmation
 Step 16:  Modify articles/edit.html to allow editing of existing article
 Step 17:  Reorganize articles spec into separate files (it's getting too big!)
+Step 18:  Add validations to the article model, and test them
+NOTE:     The String column for :title automatically validates at 50 characters
+Step 19:  Inform the user why their creation or update failed validations

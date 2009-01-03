@@ -12,27 +12,35 @@ describe "resource(@article, :edit)", :given => "a article exists" do
   end
   
   describe "when submitting the form" do
+    it_should_behave_like "a form with potentially invalid details"
+    
     before(:each) do
-      @paragraph = /[:paragraph:]/.gen
-      fill_in      "Title", :with => "A new glorious title"
-      fill_in      "Body",  :with => @paragraph
-      @response = click_button "Update"
+      @button_name = "Update"
     end
     
-    it "redirects to resource(@article)" do
-      @response.url.should include(resource(Article.first))
-    end
+    describe "with valid details" do
+      before(:each) do
+        @paragraph = /[:paragraph:]/.gen
+        fill_in      "Title", :with => "A new glorious title"
+        fill_in      "Body",  :with => @paragraph
+        @response = click_button @button_name
+      end
     
-    it "displays the article's title" do
-      @response.should have_selector("h1:contains('A new glorious title')")
-    end
+      it "redirects to resource(@article)" do
+        @response.url.should include(resource(Article.first))
+      end
     
-    it "displays the article's body" do
-      @response.should have_selector(":contains('#{@paragraph}')")
-    end
+      it "displays the article's title" do
+        @response.should have_selector("h1:contains('A new glorious title')")
+      end
     
-    it "displays a message indicating that the article was created" do
-      @response.should have_selector("div.notice:contains('Article was successfully updated')")
+      it "displays the article's body" do
+        @response.should have_selector(":contains('#{@paragraph}')")
+      end
+    
+      it "displays a message indicating that the article was created" do
+        @response.should have_selector("div.notice:contains('Article was successfully updated')")
+      end
     end
   end
 end
