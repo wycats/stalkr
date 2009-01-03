@@ -127,6 +127,10 @@ describe "resource(:articles, :new)" do
     it "displays the article's body" do
       @response.should have_selector(":contains('#{@paragraph}')")
     end
+    
+    it "displays a message indicating that the article was created" do
+      @response.should have_selector("div.notice:contains('Article was successfully created')")
+    end
   end
 end
 

@@ -12,3 +12,4 @@ Step 11:  Modify articles/show.html to show a single article, and add a "Back" l
 Step 12:  Modify articles/new.html to allow creation of a new article
 NOTE:     If we create a new article smaller than 150 characters, the "... more link does not display", so...
 Step 13:  Add a new helper to global_helpers.rb to handle more cases
+Step 14:  Add the message[:notice] to the layout, to display "Article was successfully created"
