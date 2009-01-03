@@ -45,11 +45,17 @@ class Articles < Application
     end
   end
 
+  def delete(id)
+    # display uses the current action_name, so display @article in edit will
+    # render delete.html.erb
+    edit(id)
+  end
+
   def destroy(id)
     @article = Article.get(id)
     raise NotFound unless @article
     if @article.destroy
-      redirect resource(:articles)
+      redirect resource(:articles), :message => {:notice => "Article was successfully deleted"}
     else
       raise InternalServerError
     end
