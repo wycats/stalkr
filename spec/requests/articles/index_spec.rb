@@ -56,16 +56,4 @@ describe "resource(:articles)" do
     end
   end
   
-  describe "a successful POST" do
-    before(:each) do
-      Article.all.destroy!
-      @response = request(resource(:articles), :method => "POST", 
-        :params => { :article => { :id => nil }})
-    end
-    
-    it "redirects to resource(:articles)" do
-      @response.should redirect_to(resource(Article.first), :message => {:notice => "article was successfully created"})
-    end
-    
-  end
 end

@@ -25,10 +25,10 @@ class Comments < Application
     display @comment
   end
 
-  def create(comment)
-    @comment = Comment.new(comment)
+  def create(article_id, comment)
+    @comment = Comment.new(comment.merge(:article_id => article_id))
     if @comment.save
-      redirect resource(@comment), :message => {:notice => "Comment was successfully created"}
+      redirect resource(@comment.article), :message => {:notice => "Comment was successfully created"}
     else
       message[:error] = "Comment failed to be created"
       render :new
@@ -39,7 +39,7 @@ class Comments < Application
     @comment = Comment.get(id)
     raise NotFound unless @comment
     if @comment.update_attributes(comment)
-       redirect resource(@comment)
+       redirect resource(@comment.article)
     else
       display @comment, :edit
     end

@@ -23,3 +23,4 @@ Step 20:  Generate the comments model using "merb-gen resource article 'body:tex
 Step 21:  Modify the router to nest comments under articles
 Step 22:  Remove the default generated specs (they are not useful for nested resources)
 Step 23:  Set up timestamps and relationships for articles and comments
+Step 24:  Add list of comments to article page
