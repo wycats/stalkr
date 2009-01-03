@@ -3,7 +3,7 @@ class Article
   
   property :id, Serial
 
-  property :body, Text
-  property :title, String
+  property :body,  Text,   :nullable => false
+  property :title, String, :nullable => false
   timestamps :at
 end
