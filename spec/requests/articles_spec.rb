@@ -13,6 +13,7 @@ describe "resource(:articles)" do
     
     before(:each) do
       @response = request(resource(:articles))
+      @response_slash = request("/")
     end
     
     it "responds successfully" do
@@ -28,6 +29,7 @@ describe "resource(:articles)" do
   describe "GET", :given => "a article exists" do
     before(:each) do
       @response = request(resource(:articles))
+      @response_slash = request("/")
     end
     
     it "has a list of articles" do
@@ -40,6 +42,10 @@ describe "resource(:articles)" do
 
     it "truncates the body after 150 characters" do
       @response.should_not have_selector("ul li:contains('#{@article[:body][151..200]}')")
+    end
+    
+    it "is identical to visiting '/'" do
+      @response.body.to_s.should == @response_slash.body.to_s
     end
   end
   

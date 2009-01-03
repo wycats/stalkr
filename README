@@ -6,3 +6,4 @@ Step 5: Automigrate the database "rake db:automigrate"
 Step 6: Add dm-sweatshop to dependencies.rb and run 'thor merb:gem:install'
 Step 7: Generate some bootstrap articles using dm-sweatshop (run "rake bootstrap" afterward)
 Step 8: Modify articles/index.html to list the generated articles
+Step 9: Modify config/router.rb to point "/" to Articles#index
