@@ -16,6 +16,10 @@ describe "resource(:articles)" do
       @response.should have_selector("ul")
     end
     
+    it "contains a link to make a new article" do
+      @response.should have_selector("a[href*='#{resource(:articles, :new)}']")
+    end
+    
   end
   
   describe "GET", :given => "a article exists" do

@@ -24,3 +24,4 @@ Step 21:  Modify the router to nest comments under articles
 Step 22:  Remove the default generated specs (they are not useful for nested resources)
 Step 23:  Set up timestamps and relationships for articles and comments
 Step 24:  Add list of comments to article page
+Step 25:  Add a 'New' link to the index page so you can create new posts
