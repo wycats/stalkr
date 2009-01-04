@@ -27,3 +27,4 @@ Step 24:  Add list of comments to article page
 Step 25:  Add a 'New' link to the index page so you can create new posts
 Step 26:  Add Haml to the merb app and convert the views (except the partial) to Haml
 NOTE:     Run 'thor merb:gem:install' after modifying dependencies.rb to get the new gems
+Step 27:  Make the 'delete' button Ajaxified

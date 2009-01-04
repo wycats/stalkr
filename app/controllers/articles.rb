@@ -1,5 +1,5 @@
 class Articles < Application
-  # provides :xml, :yaml, :js
+  provides :json
 
   def index
     @articles = Article.all
@@ -55,7 +55,11 @@ class Articles < Application
     @article = Article.get(id)
     raise NotFound unless @article
     if @article.destroy
-      redirect resource(:articles), :message => {:notice => "Article was successfully deleted"}
+      if content_type == :json
+        display(:notice => "Article was successfully deleted")
+      else
+        redirect resource(:articles), :message => {:notice => "Article was successfully deleted"}
+      end
     else
       raise InternalServerError
     end

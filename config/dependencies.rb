@@ -23,7 +23,8 @@ dependency "do_sqlite3", "0.9.10.1" # If using another database, replace this
 dependency "dm-core", dm_gems_version         
 dependency "dm-aggregates", dm_gems_version   
 dependency "dm-migrations", dm_gems_version   
-dependency "dm-timestamps", dm_gems_version   
+dependency "dm-serializer", dm_gems_version   
+dependency "dm-timestamps", dm_gems_version
 dependency "dm-types", dm_gems_version        
 dependency "dm-validations", dm_gems_version  
 dependency "dm-sweatshop", dm_gems_version
