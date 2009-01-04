@@ -28,3 +28,7 @@ Step 25:  Add a 'New' link to the index page so you can create new posts
 Step 26:  Add Haml to the merb app and convert the views (except the partial) to Haml
 NOTE:     Run 'thor merb:gem:install' after modifying dependencies.rb to get the new gems
 Step 27:  Make the 'delete' button Ajaxified
+Step 28:  Get MySQL dump from old blog and import into a new local MySQL DB
+NOTE:     Use:
+            CREATE DATABASE `legacy-blog` CHARACTER SET utf8 COLLATE utf8_general_ci;
+            mysql5 -u root legacy-blog < legacy-blog.sql
