@@ -34,3 +34,5 @@ NOTE:     Use:
             mysql5 -u root legacy-blog < legacy-blog.sql
 Step 29:  Add do_mysql to dependencies.rb and run 'thor merb:gem:install'
 Step 30:  Write mapping for legacy database for articles
+NOTE:     You can now use bin/merb -i to manipulate the old articles
+Step 31:  Write mapping for legacy database for comments
