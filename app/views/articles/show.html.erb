@@ -8,7 +8,7 @@
 <% @article.comments.each do |comment| %>
   <li>
     <h4><%=h comment.author %></h4>
-    <div><%=h comment.body %></div>
+    <div><%= comment.body %></div>
   </li>
 <% end %>
 </ul>
