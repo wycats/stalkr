@@ -32,3 +32,4 @@ Step 28:  Get MySQL dump from old blog and import into a new local MySQL DB
 NOTE:     Use:
             CREATE DATABASE `legacy-blog` CHARACTER SET utf8 COLLATE utf8_general_ci;
             mysql5 -u root legacy-blog < legacy-blog.sql
+Step 29:  Add do_mysql to dependencies.rb and run 'thor merb:gem:install'

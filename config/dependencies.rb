@@ -30,4 +30,5 @@ dependency "dm-validations", dm_gems_version
 dependency "dm-sweatshop", dm_gems_version
 
 dependency "merb_datamapper", merb_gems_version
-dependency "do_sqlite3" # If using another database, replace this
+dependency "do_sqlite3", "0.9.10.1" # If using another database, replace this
+dependency "do_mysql", "0.9.10.1", :require_as => nil
