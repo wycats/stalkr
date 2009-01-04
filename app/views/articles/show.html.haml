@@ -1,0 +1,17 @@
+%h1= @article.title
+= @article.body
+
+%p= link_to "Back", resource(:articles)
+
+%h2 Comments
+
+%ul.comments
+  - @article.comments.each do |comment|
+    %li
+      %h4= h comment.author
+      %div= h comment.body
+
+= form_for Comment.new, :action => resource(@article, :comments) do
+  %p= text_field :author, :label => "Author"
+  %p= text_area  :body,   :label => "Comment"
+  %p= submit "Submit"

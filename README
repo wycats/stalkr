@@ -25,3 +25,5 @@ Step 22:  Remove the default generated specs (they are not useful for nested res
 Step 23:  Set up timestamps and relationships for articles and comments
 Step 24:  Add list of comments to article page
 Step 25:  Add a 'New' link to the index page so you can create new posts
+Step 26:  Add Haml to the merb app and convert the views (except the partial) to Haml
+NOTE:     Run 'thor merb:gem:install' after modifying dependencies.rb to get the new gems

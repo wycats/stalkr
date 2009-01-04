@@ -1,0 +1,4 @@
+%h1== Editing #{@article.title}
+
+= form_for @article, :action => resource(@article) do
+  = partial :form

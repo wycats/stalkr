@@ -1,0 +1,11 @@
+%h1 Blog Posts
+
+%ul
+  - @articles.each do |article|
+    %li
+      %h4= article.title
+      %p
+        = read_more(article.body, article, 150)
+        = link_to "[delete]", resource(article, :delete)
+        = link_to "[edit]", resource(article, :edit)
+  %p= link_to "New Article", resource(:articles, :new)
