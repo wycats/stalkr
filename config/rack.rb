@@ -7,5 +7,7 @@ end
 # that serves static files
 use Merb::Rack::Static, Merb.dir_for(:public)
 
+use Merb::Rack::Profiler
+
 # this is our main merb application
 run Merb::Rack::Application.new

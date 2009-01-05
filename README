@@ -38,3 +38,4 @@ NOTE:     You can now use bin/merb -i to manipulate the old articles
 Step 31:  Write mapping for legacy database for comments
 Step 32:  Switched data migration models to use :legacy database
 Step 33:  Copy legacy data to new database
+Step 34:  Profile app and make some small changes to improve speed

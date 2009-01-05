@@ -3,7 +3,7 @@ class Comment
   
   # Database schema
   property   :id,     Serial
-  property   :body,   Text
+  property   :body,   Text, :lazy => false
   property   :author, String
   timestamps :at
 

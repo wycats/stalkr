@@ -3,7 +3,7 @@ class Article
   
   # Database schema
   property   :id,    Serial
-  property   :body,  Text,   :nullable => false
+  property   :body,  Text,   :nullable => false, :lazy => false
   property   :title, String, :nullable => false
   timestamps :at
   
