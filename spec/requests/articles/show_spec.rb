@@ -41,6 +41,7 @@ describe "resource(@article)", :given => "a article exists" do
       describe "submitting a new comment" do
         before(:each) do
           fill_in      "Author",  :with => "Awesome Dude"
+          fill_in      "Twitter Name", :with => "osim_dude"
           fill_in      "Comment", :with => "What kind of idiot are you anyway?"
           @response = click_button "Submit"
         end
@@ -52,6 +53,11 @@ describe "resource(@article)", :given => "a article exists" do
         it "shows the title of the new comment that was created" do
           @response.should have_selector(
             "ul.comments li:contains('Awesome Dude')")
+        end
+        
+        it "shows the twitter name of the author of the new comment" do
+          @response.should have_selector(
+            "ul.comments li a[href*='osim_dude']:contains('Follow Me on Twitter')")
         end
         
         it "shows the body of the new comment that was created" do

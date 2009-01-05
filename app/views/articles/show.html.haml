@@ -9,9 +9,12 @@
   - @article.comments.each do |comment|
     %li
       %h4= h comment.author
+      - unless comment.twitter_name.blank?
+        %h5= link_to("Follow Me on Twitter", "http://www.twitter.com/#{h(comment.twitter_name)}")
       %div= h comment.body
 
 = form_for Comment.new, :action => resource(@article, :comments) do
   %p= text_field :author, :label => "Author"
+  %p= text_field :twitter_name, :label => "Twitter Name"
   %p= text_area  :body,   :label => "Comment"
   %p= submit "Submit"
