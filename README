@@ -37,3 +37,4 @@ Step 30:  Write mapping for legacy database for articles
 NOTE:     You can now use bin/merb -i to manipulate the old articles
 Step 31:  Write mapping for legacy database for comments
 Step 32:  Switched data migration models to use :legacy database
+Step 33:  Copy legacy data to new database

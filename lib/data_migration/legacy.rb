@@ -1,3 +1,5 @@
+DataMapper.auto_migrate!
+
 DataMapper.setup( :legacy, 
                   :adapter => "mysql", 
                   :encoding => "utf8", 
@@ -49,3 +51,6 @@ class Comment
   
   belongs_to :article
 end
+
+Article.copy(:legacy, :default)
+Comment.copy(:legacy, :default)
