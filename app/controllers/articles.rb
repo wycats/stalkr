@@ -1,5 +1,6 @@
 class Articles < Application
   provides :json
+  before :ensure_authenticated, :exclude => [:index, :show]
 
   def index
     @articles = Article.all

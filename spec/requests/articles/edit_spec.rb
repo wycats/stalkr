@@ -1,9 +1,18 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "shared"))
 
 describe "resource(@article, :edit)", :given => "a article exists" do
+  describe "when not logged in" do
+    before(:each) do
+      @url = resource(Article.first, :edit)
+    end
+
+    it_should_behave_like "an unauthenticated page"
+  end  
+  
   it_should_behave_like "a form for entering title and body"
   
   before(:each) do
+    login
     @response = request(resource(Article.first, :edit))
   end
   

@@ -1,11 +1,31 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "spec_helper"))
 
 given "a article exists" do
+  login
   Article.all.destroy!
 
   @article = Article.make.attributes
+  @article[:title].strip!
+  @article[:body].strip!
   
   request(resource(:articles), :method => "POST", :params => { :article => @article })
+  logout
+end
+
+shared_examples_for "an unauthenticated page" do
+  before(:each) do
+    logout
+    @response = request(@url, :method => @method || "GET")
+  end
+  
+  it "returns a 401" do
+    @response.status.should == 401
+  end
+  
+  it "has a login form" do
+    @response.should have_selector("input[type='text'][name='login']")
+    @response.should have_selector("input[type='password'][name='password']")
+  end
 end
 
 shared_examples_for "a form for entering title and body" do

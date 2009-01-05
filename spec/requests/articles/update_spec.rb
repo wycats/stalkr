@@ -4,6 +4,7 @@ describe "resource(@article)", :given => "a article exists" do
   
   describe "PUT" do
     before(:each) do
+      login
       @article = Article.first
       @response = request(resource(@article), :method => "PUT", 
         :params => { :article => {:id => @article.id} })
