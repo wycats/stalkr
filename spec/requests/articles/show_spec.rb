@@ -38,6 +38,21 @@ describe "resource(@article)", :given => "a article exists" do
         @response.should have_selector(
           "form textarea[name*=body]")
       end
+      
+      describe "submitting a comment with Markdown" do
+        before(:each) do
+          fill_in      "Author",  :with => "Awesome Dude"
+          fill_in      "Twitter Name", :with => "osim_dude"
+          fill_in      "Comment", :with => "What kind of *idiot* are you anyway?"
+          @response = click_button "Submit"
+        end
+        
+        it "shows the comment formatted in HTML" do
+          @response.should have_selector(
+            "ul.comments li em:contains('idiot')")
+        end
+      end
+      
       describe "submitting a new comment" do
         before(:each) do
           fill_in      "Author",  :with => "Awesome Dude"

@@ -42,3 +42,4 @@ Step 34:  Profile app and make some small changes to improve speed
 Step 35:  Add authentication
 Step 36:  Add support for commenters adding their twitter name
 NOTE:     Run rake db:migrate to get the data into the DB
+Step 37:  Add support for Markdown to the comment field using a DM custom type
